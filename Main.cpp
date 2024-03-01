@@ -12,8 +12,7 @@ int main(int CMDinNum,char**CMDinOption){
 	//读取输入参数
 	if(CMDinNum>1&&(strcmp(CMDinOption[1],"-h")==0||strcmp(CMDinOption[1],"--help")==0)){
 		cout<<"SRT Cutting Audio Clips\n"
-			<<"usage: SRTCAC.exe [Audio's Pathname] [Out files' Path] [Subtitle's Pathname] [Speaker] [Language] [LogLevel]\n"
-			<<"输出路径不能有中文";
+			<<"usage: SRTCAC.exe [Audio's Pathname] [Out files' Path] [Subtitle's Pathname] [Speaker] [Language] [LogLevel]\n";
 		return 0;
 	}
 
