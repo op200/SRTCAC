@@ -46,7 +46,7 @@ int main(int CMDinNum,char**CMDinOption){
 	if(CMDinNum>=4)
 		SubPathname=CMDinOption[3];
 	else{
-		cout<<"SRT's pathname:";
+		cout<<"Input the subtitle's pathname:";
 		cin>>SubPathname;
 	}
 
