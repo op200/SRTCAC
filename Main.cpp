@@ -3,6 +3,7 @@
 #include<string>
 #include<iomanip>
 #include<Windows.h>
+#include<direct.h>
 
 using namespace std;
 
@@ -16,8 +17,8 @@ int main(int CMDinNum,char**CMDinOption){
 		return 0;
 	}
 
-	string AudioPathname,SubPathname,Speaker,Language,LogLevel;
-	wchar_t OutPath[600];
+	string AudioPathname,OutPath,SubPathname,Speaker,Language,LogLevel;
+	//wchar_t OutPath[600];
 
 	if(CMDinNum>7){
 		cout<<"Options are too lot.";
@@ -32,13 +33,15 @@ int main(int CMDinNum,char**CMDinOption){
 	}
 
 	if(CMDinNum>=3)
-		swprintf(OutPath,600,L"%hs",CMDinOption[2]);
+		OutPath=CMDinOption[2];
+	//swprintf(OutPath,600,L"%hs",CMDinOption[2]);
 	else{
 	RewriteOutPath:
-		char hOutPath[600];
+		//char hOutPath[600];
 		cout<<"Input the out files' path:";
-		cin>>hOutPath;
-		swprintf(OutPath,600,L"%hs",hOutPath);
+		//cin>>hOutPath;
+		cin>>OutPath;
+		//swprintf(OutPath,600,L"%hs",hOutPath);
 	}
 
 	if(CMDinNum>=4)
@@ -70,11 +73,12 @@ int main(int CMDinNum,char**CMDinOption){
 	}
 
 
-	if(_wchdir(OutPath)){
-		wcout
+	if(_chdir(OutPath.c_str())){
+		//wcout
+		cout
 			<<"The out files' path is error, it's:\n\t"
-			<<OutPath<<"\n\tRewrite it?\n\tYes / No ?";
-		if(system("choice")==2)
+			<<OutPath<<"\n\tRewrite it? Or exit.\n\tYes / No ?";
+		if(system("choice")==1)
 			goto RewriteOutPath;
 		else return 2;
 	}
